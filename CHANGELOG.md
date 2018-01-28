@@ -1,4 +1,4 @@
 # Change Log
 
-## [0.0.1]
+## [1.0.0]
 - Initial release. Convert TossFile plugin from Sublime Text to Visual Studio Code.
