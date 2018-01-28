@@ -1,0 +1,88 @@
+{
+    "name": "toss-file",
+    "displayName": "Toss File",
+    "description": "Copy the current file to new pre-mapped locations",
+    "version": "0.0.1",
+    "publisher": "greenvillesoftware",
+    "author": "Jeff Baranski <jeff.baranski@outlook.com>",
+    "contributors": [
+
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/jbaranski/toss-file",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jbaranski/toss-file.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jbaranski/toss-file/issues"
+    },
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "copy",
+        "file",
+        "copy file",
+        "map file",
+        "toss",
+        "toss file",
+        "TossFile",
+        "file util",
+        "file copy"
+    ],
+    "activationEvents": [
+        "onCommand:extension.tossFile"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.tossFile",
+                "title": "Toss File"
+            }
+        ],
+        "configuration": [
+            {
+                "type": "object",
+                "title": "Toss File Configuration",
+                "properties": {
+                    "tossfile.pathMapping": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Array of path mapping objects. \"input\" is the input base absolute path. \"output\" is the output base absolute path."
+                    },
+                    "tossfile.statusTimeout": {
+                        "type": "integer",
+                        "default": 5,
+                        "description": "Time in seconds the status bar message shows."
+                    },
+                    "tossfile.replaceIfExists": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Replace an exisiting file at the output location if it already exists."
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.6.1",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "fs-extra": "^5.0.0",
+        "mkdirp": "^0.5.1",
+        "path": "^0.12.7"
+    }
+}
