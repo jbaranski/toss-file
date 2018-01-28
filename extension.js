@@ -1,3 +1,10 @@
+/**
+ * @author Jeff Baranski <jeff.baranski@outlook.com>
+ * @license MIT (see LICENSE in project root for more info)
+ *
+ * Visual Studio Code plugin for copying the current file to new pre-mapped locations
+ *
+ */
 const vscode = require('vscode');
 const path = require('path');
 const mkdirp = require('mkdirp');
