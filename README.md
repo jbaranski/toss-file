@@ -6,6 +6,7 @@ Visual Studio Code plugin for copying the current file to new pre-mapped locatio
 
 - Always use a trailing slash to the end of the path mappings you list
 - On Windows the root drive folder name must be lower case in your path mappings, for example c: instead of C:
+- replaceIfExists can be put on a specifc pathMapping entry to override the global setting on a case by case basis
 
 Windows
 ```
@@ -17,6 +18,11 @@ Windows
     {
         "input": "c:\\home\\source2\\",
         "output": "c:\\home\\destination2\\"
+    },
+    {
+        "input": "c:\\home\\source3\\"
+        "output": "c:\\home\\destination3\\",
+        "replaceIfExists": false
     }
 ]
 ```
@@ -31,6 +37,11 @@ Windows
     {
         "input": "/home/source2/",
         "output": "/home/destination2/"
+    },
+    {
+        "input": "/home/source3/"
+        "output": "/home/destination3/",
+        "replaceIfExists": false
     }
 ]
 ```
