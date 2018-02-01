@@ -62,9 +62,11 @@ class TossFile {
     toss() {
         if (this.inputFile) {
             for (let i = 0; i < this.pathMapping.length; i++) {
-                this.setOutputFile(this.pathMapping[i]);
+                const pathMap = this.pathMapping[i];
+                this.setOutputFile(pathMap);
                 if (this.outputFile) {
-                    if (!this.replaceIfExists && fs.existsSync(this.outputFile)) {
+                    const replaceIfExistsLcl = pathMap.replaceIfExists === false || pathMap.replaceIfExists === true ? pathMap.replaceIfExists : this.replaceIfExists;
+                    if (!replaceIfExistsLcl && fs.existsSync(this.outputFile)) {
                         continue;
                     }
                     mkdirp.sync(path.dirname(this.outputFile));
