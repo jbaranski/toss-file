@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.0.0]
+## [1.0.1]
 - Allow one to set a specifc replaceIfExists flag on a specific mapping, overriding the global setting
 
 ## [1.0.0]
