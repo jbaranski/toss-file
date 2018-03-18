@@ -2,7 +2,7 @@
     "name": "toss-file",
     "displayName": "Toss File",
     "description": "Copy the current file to new pre-mapped locations",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "greenvillesoftware",
     "author": "Jeff Baranski <jeff.baranski@outlook.com>",
     "contributors": [],
