@@ -8,7 +8,7 @@ Visual Studio Code plugin for copying the current file to new pre-mapped locatio
 
 - Always use a trailing slash to the end of the path mappings you list
 - On Windows the root drive folder name must be lower case in your path mappings, for example c: instead of C:
-- replaceIfExists can be put on a specific pathMapping entry to override the global setting on a case by case basis
+- `tossfile.replaceIfExists`, `tossfile.extensionExcludes`, `tossfile.nameExcludes`, `tossfile.pathExcludes` can be put on a specific pathMapping entry to override the global settings on a case by case basis
 
 Windows
 ```
@@ -24,7 +24,10 @@ Windows
     {
         "input": "c:\\home\\source3\\"
         "output": "c:\\home\\destination3\\",
-        "replaceIfExists": false
+        "replaceIfExists": false,
+        "extensionExcludes": [".jar", ".class"],
+        "nameExcludes": ["File1.txt"],
+        "pathExcludes": ["c:\\home\\destination3\\build\\", "c:\\home\\destination3\\topsecret\\"]
     }
 ]
 ```
@@ -43,7 +46,10 @@ Windows
     {
         "input": "/home/source3/"
         "output": "/home/destination3/",
-        "replaceIfExists": false
+        "replaceIfExists": false,
+        "extensionExcludes": [".jar", ".class"],
+        "nameExcludes": ["File1.txt"],
+        "pathExcludes": ["/home/destination3/build/", "/home/destination3/topsecret/"]
     }
 ]
 ```
@@ -56,6 +62,21 @@ Control how long the status message appears (in seconds) in the footer of the fi
 Replace an exisiting file at the output location if it already exists. Default is true.
 ```
 "tossfile.replaceIfExists": true
+```
+
+List of extensions to ignore even if a path match is found. Default is empty list.
+```
+"tossfile.extensionExcludes": []
+```
+
+List of file names to ignore even if a path match is found. Default is empty list.
+```
+"tossfile.nameExcludes": []
+```
+
+List of output paths to ignore even if a path match is found. Default is empty list.
+```
+"tossfile.pathExcludes": []
 ```
 
 ## Example Scenarios
