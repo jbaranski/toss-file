@@ -2,6 +2,8 @@
 
 Visual Studio Code plugin for copying the current file to new pre-mapped locations
 
+<sup><sub>Sublime Text 3 equivalent: [https://github.com/jbaranski/TossFile](https://github.com/jbaranski/TossFile)</sub></sup>
+
 ## Extension Settings
 
 - Always use a trailing slash to the end of the path mappings you list

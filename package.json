@@ -5,9 +5,7 @@
     "version": "1.0.2",
     "publisher": "greenvillesoftware",
     "author": "Jeff Baranski <jeff.baranski@outlook.com>",
-    "contributors": [
-
-    ],
+    "contributors": [],
     "license": "MIT",
     "homepage": "https://github.com/jbaranski/toss-file",
     "repository": {
@@ -60,6 +58,21 @@
                         "type": "boolean",
                         "default": true,
                         "description": "Replace an exisiting file at the output location if it already exists."
+                    },
+                    "tossfile.extensionExcludes": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Array of file extensions to ignore even if a path match is found."
+                    },
+                    "tossfile.nameExcludes": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Array of file names to ignore even if a path match is found."
+                    },
+                    "tossfile.pathExcludes": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Array of output paths to ignore even if a path match is found."
                     }
                 }
             }
