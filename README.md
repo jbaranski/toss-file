@@ -8,7 +8,7 @@ Visual Studio Code plugin for copying the current file to new pre-mapped locatio
 
 - Always use a trailing slash to the end of the path mappings you list
 - On Windows the root drive folder name must be lower case in your path mappings, for example c: instead of C:
-- `tossfile.replaceIfExists`, `tossfile.extensionExcludes`, `tossfile.nameExcludes`, `tossfile.pathExcludes` can be put on a specific pathMapping entry to override the global settings on a case by case basis
+- `replaceIfExists`, `extensionExcludes`, `nameExcludes`, `pathExcludes` can be put on a specific pathMapping entry as a key to override the global settings on a case by case basis
 
 Windows
 ```
@@ -81,7 +81,7 @@ List of output paths to ignore even if a path match is found. Default is empty l
 
 ## Example Scenarios
 
-Invoke the plugin by pressing `Ctrl+Shift+P` or `Cmd+Shift+P` and executing the `Toss File` command
+Invoke the plugin by pressing `Ctrl+Shift+P` or `Cmd+Shift+P` and execute the `Toss File` command
 
 Example 1 (assume you are using the settings listed above):
 
