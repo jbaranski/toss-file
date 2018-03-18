@@ -120,7 +120,7 @@ class TossFile {
         if ((!replaceIfExists && fs.existsSync(this.outputFile)) ||
             extensionExcludes.includes(fileExtension) ||
             nameExcludes.includes(fileName) ||
-            pathExcludes.startsWith(this.outputFile)) {
+            pathExcludes.includes(this.outputFile)) {
             ret = true;
         }
         return ret;
@@ -152,14 +152,14 @@ class TossFile {
     }
 
     setStatus() {
-        if (this.showStatus && this.tossCount > 0) {
+        if (this.showStatus && (this.tossCount > 0 || this.skipCount > 0)) {
             this.clearStatus();
             let baseText = "Tossed file to " + this.tossCount + " location";
             if (this.tossCount !== 1) {
                 baseText += "s";
             }
             if (this.skipCount > 0) {
-                baseText += "; settings made toss skip " + this.skipCount + " location";
+                baseText += "; exclude settings made toss skip " + this.skipCount + " location";
                 if (this.skipCount > 1) {
                     baseText += "s";
                 }
