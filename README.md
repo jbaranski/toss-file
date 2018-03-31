@@ -8,7 +8,7 @@ Visual Studio Code plugin for copying the current file to new pre-mapped locatio
 
 - Always use a trailing slash to the end of the path mappings you list
 - On Windows the root drive folder name must be lower case in your path mappings, for example c: instead of C:
-- `replaceIfExists`, `extensionExcludes`, `nameExcludes`, `pathExcludes` can be put on a specific pathMapping entry as a key to override the global settings on a case by case basis
+- `replaceIfExists`, `extensionExcludes`, `nameExcludes`, `outputPathExcludes`, `inputPathExcludes` can be put on a specific pathMapping entry as a key to override the global settings on a case by case basis
 
 Windows
 ```
@@ -27,7 +27,8 @@ Windows
         "replaceIfExists": false,
         "extensionExcludes": [".jar", ".class"],
         "nameExcludes": ["File1.txt"],
-        "pathExcludes": ["c:\\home\\destination3\\build\\", "c:\\home\\destination3\\topsecret\\"]
+        "outputPathExcludes": ["c:\\home\\destination3\\build\\", "c:\\home\\destination3\\topsecret\\"],
+        "inputPathExcludes: ["c:\\home\\source1\\nocopy\\"]
     }
 ]
 ```
@@ -49,7 +50,8 @@ Windows
         "replaceIfExists": false,
         "extensionExcludes": [".jar", ".class"],
         "nameExcludes": ["File1.txt"],
-        "pathExcludes": ["/home/destination3/build/", "/home/destination3/topsecret/"]
+        "outputPathExcludes": ["/home/destination3/build/", "/home/destination3/topsecret/"]
+        "inputPathExcludes: ["/home/source1/nocopy/"]
     }
 ]
 ```
@@ -76,7 +78,12 @@ List of file names to ignore even if a path match is found. Default is empty lis
 
 List of output paths to ignore even if a path match is found. Default is empty list.
 ```
-"tossfile.pathExcludes": []
+"tossfile.outputPathExcludes": []
+```
+
+List of input paths to ignore even if a path match is found. Default is empty list.
+```
+"tossfile.inputPathExcludes": []
 ```
 
 ## Example Scenarios

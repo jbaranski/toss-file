@@ -69,10 +69,15 @@
                         "default": [],
                         "description": "Array of file names to ignore even if a path match is found."
                     },
-                    "tossfile.pathExcludes": {
+                    "tossfile.outputPathExcludes": {
                         "type": "array",
                         "default": [],
                         "description": "Array of output paths to ignore even if a path match is found."
+                    },
+                    "tossfile.inputPathExcludes": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Array of input paths to ignore even if a path match is found."
                     }
                 }
             }

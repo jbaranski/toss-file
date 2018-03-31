@@ -25,7 +25,8 @@ class TossFile {
         this.replaceIfExists = settings.get('replaceIfExists', true);
         this.extensionExcludes = settings.get('extensionExcludes', []);
         this.nameExcludes = settings.get('nameExcludes', []);
-        this.pathExcludes = settings.get('pathExcludes', []);
+        this.outputPathExcludes = settings.get('outputPathExcludes', []);
+        this.inputPathExcludes = settings.get('inputPathExcludes', []);
     }
 
     set pathMapping(pathMapping) {
@@ -72,12 +73,20 @@ class TossFile {
         return this._nameExcludes;
     }
 
-    set pathExcludes(pathExcludes) {
-        this._pathExcludes = Array.isArray(pathExcludes) ? pathExcludes : [];
+    set outputPathExcludes(outputPathExcludes) {
+        this._outputPathExcludes = Array.isArray(outputPathExcludes) ? outputPathExcludes : [];
     }
 
-    get pathExcludes() {
-        return this._pathExcludes;
+    get outputPathExcludes() {
+        return this._outputPathExcludes;
+    }
+
+    set inputPathExcludes(inputPathExcludes) {
+        this._inputPathExcludes = Array.isArray(inputPathExcludes) ? inputPathExcludes : [];
+    }
+
+    get inputPathExcludes() {
+        return this._inputPathExcludes;
     }
 
     set inputFile(inputFile) {
@@ -116,14 +125,22 @@ class TossFile {
         const replaceIfExists = this.getReplaceIfExists(pathMap.replaceIfExists);
         const extensionExcludes = this.getExtensionExcludes(pathMap.extensionExcludes);
         const nameExcludes = this.getNameExcludes(pathMap.nameExcludes);
-        const pathExcludes = this.getPathExcludes(pathMap.pathExcludes);
+        const outputPathExcludes = this.getOutputPathExcludes(pathMap.outputPathExcludes);
+        const inputPathExcludes = this.getInputPathExcludes(pathMap.inputPathExcludes);
         if ((!replaceIfExists && fs.existsSync(this.outputFile)) ||
             extensionExcludes.includes(fileExtension) ||
             nameExcludes.includes(fileName) ||
-            pathExcludes.includes(this.outputFile)) {
+            this.isPathSkip(outputPathExcludes, this.outputFile) ||
+            this.isPathSkip(inputPathExcludes, this.inputFile)) {
             ret = true;
         }
         return ret;
+    }
+
+    isPathSkip(pathExcludes, targetFile) {
+        return pathExcludes.some(function(el) {
+            return targetFile.startsWith(el);
+        });
     }
 
     getReplaceIfExists(replaceIfExists) {
@@ -138,8 +155,12 @@ class TossFile {
         return Array.isArray(nameExcludes) ? nameExcludes : this.nameExcludes;
     }
 
-    getPathExcludes(pathExcludes) {
-        return Array.isArray(pathExcludes) ? pathExcludes : this.pathExcludes;
+    getOutputPathExcludes(outputPathExcludes) {
+        return Array.isArray(outputPathExcludes) ? outputPathExcludes : this.outputPathExcludes;
+    }
+
+    getInputPathExcludes(inputPathExcludes) {
+        return Array.isArray(inputPathExcludes) ? inputPathExcludes : this.inputPathExcludes;
     }
 
     setOutputFile(pathMapping) {
@@ -188,7 +209,8 @@ class TossFile {
         this._pathMapping = null;
         this._extensionExcludes = null;
         this._nameExcludes = null;
-        this._pathExcludes = null;
+        this._outputPathExcludes = null;
+        this._inputPathExcludes = null;
     }
 }
 
